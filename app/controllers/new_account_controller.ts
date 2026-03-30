@@ -7,6 +7,24 @@ import UserTransformer from '#transformers/user_transformer'
 
 export default class NewAccountController {
   
+  /**
+ * @swagger
+ * /register:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example:
+ *             fullName: John Doe
+ *             email: john@example.com
+ *             password: 12345678
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ */
   async store({ request, serialize }: HttpContext) {
     const { fullName, email, password } = await request.validateUsing(signupValidator)
 
@@ -19,6 +37,23 @@ export default class NewAccountController {
     })
   }
 
+  /**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Login user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           example:
+ *             email: john@example.com
+ *             password: 12345678
+ *     responses:
+ *       200:
+ *         description: Login successful (returns token)
+ */
    async login({ request, response, serialize }: HttpContext) {
     const { email, password } = await request.validateUsing(loginValidator)
 
