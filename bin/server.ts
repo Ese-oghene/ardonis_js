@@ -11,6 +11,7 @@
 
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
+import { execSync } from 'child_process'
 
 
 // Use Render's /tmp folder
@@ -54,6 +55,16 @@ new Ignitor(APP_ROOT, { importer: IMPORTER })
     app.booting(async () => {
       await import('#start/env')
     })
+
+  try {
+  console.log('Running database migrations...')
+    execSync('node ace migration:run', { stdio: 'inherit' })
+    console.log('Migrations complete')
+  } catch (err) {
+    console.error('Failed to run migrations', err)
+  }
+
+
     app.listen('SIGTERM', () => app.terminate())
     app.listenIf(app.managedByPm2, 'SIGINT', () => app.terminate())
   })
