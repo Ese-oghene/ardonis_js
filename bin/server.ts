@@ -12,12 +12,22 @@
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 
-// Ensure tmp folder exists for SQLite
-const tmpDir = join(process.cwd(), 'tmp')
+
+// Use Render's /tmp folder
+const tmpDir = join('/tmp')
 if (!existsSync(tmpDir)) {
   mkdirSync(tmpDir, { recursive: true })
-  console.log('Created tmp folder for SQLite')
+  console.log('Created /tmp folder for SQLite')
+} else {
+  console.log('/tmp folder exists')
 }
+
+// // Ensure tmp folder exists for SQLite
+// const tmpDir = join(process.cwd(), 'tmp')
+// if (!existsSync(tmpDir)) {
+//   mkdirSync(tmpDir, { recursive: true })
+//   console.log('Created tmp folder for SQLite')
+// }
 
 await import('reflect-metadata')
 const { Ignitor, prettyPrintError } = await import('@adonisjs/core')
