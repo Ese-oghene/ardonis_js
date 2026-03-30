@@ -58,7 +58,7 @@ new Ignitor(APP_ROOT, { importer: IMPORTER })
 
   try {
   console.log('Running database migrations...')
-    execSync('node ace migration:run', { stdio: 'inherit' })
+    execSync('node ace migration:run  --force', { stdio: 'inherit' })
     console.log('Migrations complete')
   } catch (err) {
     console.error('Failed to run migrations', err)
