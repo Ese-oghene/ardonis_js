@@ -6,10 +6,9 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-
+// import { controllers } from '#generated/controllers'
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
-import { controllers } from '#generated/controllers'
 import NewAccountController from '#controllers/new_account_controller'
 import UserController from '#controllers/users_controller'
 import TodosController from '#controllers/todos_controller'
