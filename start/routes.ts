@@ -20,7 +20,7 @@ import TodosController from '#controllers/todos_controller'
 
 const options = {
   definition: swaggerDefinition,
-  apis: ['./build/app/controllers/**/*.js'], // ✅ fix
+  apis: ['./build/app/controllers/**/*.ts'], // ✅ fix
 }
 
 const swaggerSpec = swaggerJsdoc(options)
