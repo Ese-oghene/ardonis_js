@@ -21,6 +21,7 @@ export default class NewAccountController {
  *             fullName: John Doe
  *             email: john@example.com
  *             password: 12345678
+ *             passwordConfirmation: 12345678
  *     responses:
  *       201:
  *         description: User created successfully
